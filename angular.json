@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/fish-tokri-project",
+            "outputPath": "dist/fish-tokri-project/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -27,12 +27,75 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.webmanifest",
+              "src/assets/icons",
+              "src/assets/images"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/css/animate.min.css",
+              "src/assets/css/bulk-style.css",
+              "src/assets/css/font-style.css",
+              "src/assets/css/landing-page.css",
+              "src/assets/css/main.css",
+              "src/assets/css/responsive.css",
+              "src/assets/css/style.css",
+              "src/assets/css/swiper-bundle.min.css",
+              "src/assets/css/vendors/slick/slick-theme.css",
+              "src/assets/css/vendors/slick/slick.css",
+              "src/assets/css/vendors/animate.css",
+              "src/assets/css/vendors/bootstrap.css",
+              "src/assets/css/vendors/feather-icon.css",
+              "src/assets/css/vendors/font-awesome.css",
+              "src/assets/css/vendors/ion.rangeSlider.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/apexchart.js",
+              "src/assets/js/auto-height.js",
+              "src/assets/js/clipboard.min.js",
+              "src/assets/js/copy-clipboard.js",
+              "src/assets/js/custom_swiper.js",
+              "src/assets/js/custom-chart.js",
+              "src/assets/js/custom-slick-animated.js",
+              "src/assets/js/custom-wow.js",
+              "src/assets/js/delivery-option.js",
+              "src/assets/js/filter-sidebar.js",
+              "src/assets/js/fly-cart.js",
+              "src/assets/js/ion.rangeSlider.min.js",
+              "src/assets/js/jquery.elevatezoom.js",
+              "src/assets/js/jquery-3.6.0.min.js",
+              "src/assets/js/jquery-ui.min.js",
+              "src/assets/js/landing-script.js",
+              "src/assets/js/lazysizes.min.js",
+              "src/assets/js/lusqsztk.js",
+              "src/assets/js/nav-tab.js",
+              "src/assets/js/otp.js",
+              "src/assets/js/quantity.js",
+              "src/assets/js/quantity-2.js",
+              "src/assets/js/script.js",
+              "src/assets/js/sticky-cart-bottom.js",
+              "src/assets/js/swiper-bundle.min.js",
+              "src/assets/js/table-column-remove.js",
+              "src/assets/js/theme-setting.js",
+              "src/assets/js/timer1.js",
+              "src/assets/js/timer2.js",
+              "src/assets/js/timer3.js",
+              "src/assets/js/timer4.js",
+              "src/assets/js/wizard.js",
+              "src/assets/js/wow.min.js",
+              "src/assets/js/zoom-filter.js",
+              "src/assets/js/slick/custom_slick.js",
+              "src/assets/js/slick/slick.js",
+              "src/assets/js/slick/slick-animation.min.js",
+              "src/assets/js/feather/feather.min.js",
+              "src/assets/js/feather/feather-icon.js",
+              "src/assets/js/bootstrap/bootstrap-notify.min.js",
+              "src/assets/js/bootstrap/bootstrap.bundle.min.js",
+              "src/assets/js/bootstrap/popper.min.js"
+            ],
+            "serviceWorker": true,
+            "ngswConfigPath": "ngsw-config.json"
           },
           "configurations": {
             "production": {
@@ -90,13 +153,71 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.webmanifest",
+              "src/assets/icons",
+              "src/assets/images"
             ],
             "styles": [
               "src/styles.scss"
             ],
             "scripts": []
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/fish-tokri-project/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json",
+            "inlineStyleLanguage": "scss"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "vendorChunk": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "fish-tokri-project:build:development",
+              "serverTarget": "fish-tokri-project:server:development"
+            },
+            "production": {
+              "browserTarget": "fish-tokri-project:build:production",
+              "serverTarget": "fish-tokri-project:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "fish-tokri-project:build:production",
+              "serverTarget": "fish-tokri-project:server:production"
+            },
+            "development": {
+              "browserTarget": "fish-tokri-project:build:development",
+              "serverTarget": "fish-tokri-project:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }
